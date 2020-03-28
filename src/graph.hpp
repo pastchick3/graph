@@ -1,7 +1,5 @@
-// Graph v0.1.0 by pastchick3
-
-#ifndef PASTCHICK3_GRAPH
-#define PASTCHICK3_GRAPH
+#ifndef __PASTCHICK3_GRAPH__
+#define __PASTCHICK3_GRAPH__
 
 #include <algorithm>
 #include <cstddef>
