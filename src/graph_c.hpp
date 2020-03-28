@@ -37,10 +37,10 @@ typedef struct Vertices {
 } Vertices;
 
 _Graph *_cast_graph_ptr(GraphPtr graph_ptr) {
-    return static_cast<_Graph *>(graph_ptr);
+    return reinterpret_cast<_Graph *>(graph_ptr);
 }
 
-GraphPtr graph_ctor() { return static_cast<GraphPtr>(new _Graph{}); }
+GraphPtr graph_ctor() { return reinterpret_cast<GraphPtr>(new _Graph{}); }
 
 void graph_dtor(GraphPtr graph_ptr) {
     auto graph = _cast_graph_ptr(graph_ptr);
@@ -52,15 +52,12 @@ void graph_insert_vertex(GraphPtr graph_ptr, size_t vertex) {
     graph->insert_vertex(vertex);
 }
 
-// Return `true` if the insertion succeeds, otherwise return `false`.
-bool graph_insert_edge(GraphPtr graph_ptr, size_t from, size_t to,
-                       double weight = 1) {
+void graph_insert_edge(GraphPtr graph_ptr, size_t from, size_t to,
+                       double weight) {
     auto graph = _cast_graph_ptr(graph_ptr);
     try {
         graph->insert_edge(from, to, weight);
-        return true;
-    } catch (std::runtime_error err) {
-        return false;
+    } catch (std::runtime_error) {
     }
 }
 
