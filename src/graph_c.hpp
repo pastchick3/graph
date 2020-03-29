@@ -17,13 +17,13 @@ extern "C" {
 #include <cstddef>
 #include <stdexcept>
 
-typedef Graph<size_t, double> _Graph;
+typedef Graph<size_t, int> _Graph;
 
 typedef void *GraphPtr;
 
 typedef struct Edge {
     size_t to;
-    double weight;
+    int weight;
 } Edge;
 
 typedef struct Edges {
@@ -52,8 +52,7 @@ void graph_insert_vertex(GraphPtr graph_ptr, size_t vertex) {
     graph->insert_vertex(vertex);
 }
 
-void graph_insert_edge(GraphPtr graph_ptr, size_t from, size_t to,
-                       double weight) {
+void graph_insert_edge(GraphPtr graph_ptr, size_t from, size_t to, int weight) {
     auto graph = _cast_graph_ptr(graph_ptr);
     try {
         graph->insert_edge(from, to, weight);

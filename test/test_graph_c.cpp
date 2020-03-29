@@ -33,4 +33,6 @@ TEST_CASE("graph_c") {
     REQUIRE(edges->array[0].to == 2);
     REQUIRE(edges->array[0].weight == 2);
     graph_free_edges(edges);
+
+    graph_dtor(graph);
 }
